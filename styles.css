@@ -7,12 +7,159 @@
   text-decoration: none;
 }
 
-/* ----------------------------Header--------------------- */
+/* --------------------Spinner container--------------- */
 
-/* html
-{
-  font-size: 80%;
-} */
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #262626;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+  z-index: 300;
+}
+
+.display .spinner-container {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.circles {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  opacity: 0;
+  visibility: hidden;
+  animation: displayCircles 2s;
+}
+
+@keyframes displayCircles {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  25% {
+    opacity: 1;
+    visibility: visible;
+  }
+  90% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.circles div {
+  animation: circles 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 4rem 4rem;
+}
+
+.circles div::after {
+  content: "";
+  position: absolute;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: #c29525;
+  margin: -0.4rem 0 0 -0.4rem;
+}
+
+.circles div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.circles div:nth-child(1)::after {
+  top: 6.3rem;
+  left: 6.3rem;
+}
+
+.circles div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.circles div:nth-child(2)::after {
+  top: 6.8rem;
+  left: 5.6rem;
+}
+
+.circles div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.circles div:nth-child(3)::after {
+  top: 7.1rem;
+  left: 4.8rem;
+}
+
+.circles div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.circles div:nth-child(4)::after {
+  top: 7.2rem;
+  left: 4rem;
+}
+
+.circles div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.circles div:nth-child(5)::after {
+  top: 7.1rem;
+  left: 3.2rem;
+}
+
+.circles div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.circles div:nth-child(6)::after {
+  top: 6.8rem;
+  left: 2.4rem;
+}
+
+.circles div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.circles div:nth-child(7)::after {
+  top: 6.3rem;
+  left: 1.7rem;
+}
+
+.circles div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.circles div:nth-child(8)::after {
+  top: 5.6rem;
+  left: 1.2rem;
+}
+
+@keyframes circles {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: none;
+}
+.display .container {
+  display: block;
+}
+
+/* ----------------------------Header--------------------- */
 
 .header {
   height: 100vh;
@@ -71,7 +218,7 @@
 
 .banner button {
   background-color: #c29525;
-  border: solid 1px black;
+  border: none;
   border-radius: 30px;
   width: 10rem;
   height: 2.5rem;
@@ -651,7 +798,9 @@
   text-shadow: 0 5px 8px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
+
 /* -------------------------- <1300px---------------------- */
+
 @media (max-width: 1300px) {
   .about-us-image-wrapper {
     grid-row: 3/-1;
@@ -663,104 +812,89 @@
     width: 80%;
     height: 500px;
   }
-  .submit-btn
-  {
+  .submit-btn {
     width: 300px;
     height: 40px;
-    padding-top: -20px; 
+    padding-top: -20px;
   }
-  .footer-content
-  {
+  .footer-content {
     width: 80%;
   }
-
   .service1 {
     grid-column: 3/7;
     width: 100%;
   }
-  
   .service2 {
     grid-column: 3/6;
     width: 100%;
   }
-  
   .service3 {
     grid-column: 3/7;
-
     width: 100%;
   }
-  
   .service4 {
     grid-column: 11/15;
     width: 100%;
   }
-  
   .service5 {
     grid-column: 12/16;
     width: 100%;
   }
-  
   .service6 {
     grid-column: 11/15;
-
     width: 100%;
     ;
   }
-  .field
-  {
+  .field {
     margin-bottom: 10px;
   }
 }
+
 /* -------------------------- <1100px---------------------- */
-@media (max-width: 1100px)
-{
-  .team
-  {
+
+@media (max-width: 1100px) {
+  .team {
     padding-bottom: 55px;
   }
-  .cards-wrapper
-  {
+  .cards-wrapper {
     flex-direction: column;
     align-items: center;
     margin-top: 44px;
   }
-  .card
-  {
+  .card {
     margin-bottom: 88px;
     /* width: 500px;
     height: 700px; */
   }
-  .field
-  {
+  .field {
     margin-bottom: 10px;
   }
 }
+
 /* -------------------------- <1000px---------------------- */
+
 @media (max-width: 1000px) {
   .banner h1 {
-    font-size: 55px;
+    margin-top: -100px;
+    font-size: 45px;
     line-height: 50px;
   }
-.contact-right
-{
-  border-radius: 10px;
-}
+  .contact-right {
+    border-radius: 10px;
+  }
   .banner p {
     font-size: 25px;
   }
-
   .banner button {
     width: 198px;
     height: 44px;
     font-size: 1.5rem;
   }
-
   .services {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .service1 {
     width: 400px;
     margin-bottom: 70px;
@@ -785,43 +919,33 @@
     width: 400px;
     margin-bottom: 70px;
   }
-  .about-us-image-wrapper
-  {
+  .about-us-image-wrapper {
     width: 400px;
   }
-
-.about-us-img-wrapper img {
+  .about-us-img-wrapper img {
     width: 100%;
-   
   }
-
   .contact-left {
     width: 0;
   }
-
   .contact-right {
     width: 100%;
   }
-
   .field {
-    width: 565px;
+    width: 500px;
   }
-
   .input-group textarea {
-    max-width: 565px;
+    max-width: 500px;
   }
-
   .submit-btn {
-    width: 565px;
+    width: 500px;
   }
-
   .footer-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 50%;
   }
-
   .copyright {
     order: 1;
     margin-top: 1rem;
@@ -830,5 +954,80 @@
 
 /* -------------------------- <700px---------------------- */
 
+@media (max-width: 700px) {
+  .banner h1 {
+    font-size: 44px;
+    line-height: 55px;
+  }
+  .banner p {
+    font-size: 22px;
+  }
+  .field {
+    width: 355px;
+  }
+  .input-group textarea {
+    max-width: 355px;
+  }
+  .submit-btn {
+    width: 355px;
+  }
+}
 
+/* -------------------------- <500px---------------------- */
 
+@media (max-width: 500px) {
+  .sidebar {
+    border-radius: 0;
+    width: 100%;
+    right: -100%;
+  }
+  .change .hamburger-menu {
+    right: 300px;
+  }
+  .service1 {
+    width: 330px;
+  }
+  .service2 {
+    width: 330px;
+  }
+  .service3 {
+    width: 330px;
+  }
+  .service4 {
+    width: 330px;
+  }
+  .service5 {
+    width: 330px;
+  }
+  .service6 {
+    width: 330px;
+  }
+  .about-us-image-wrapper {
+    width: 330px;
+  }
+  .about-us-img-wrapper img {
+    width: 100%;
+  }
+  .footer {
+    height: 198px;
+  }
+  .banner h1 {
+    font-size: 33px;
+    line-height: 40px;
+  }
+  .banner p {
+    font-size: 16px;
+  }
+  .field {
+    width: 200px;
+  }
+  .input-group textarea {
+    max-width: 200px;
+  }
+  .submit-btn {
+    width: 200px;
+  }
+  .contact-heading {
+    padding-right: 30px;
+  }
+}
